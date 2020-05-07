@@ -1,4 +1,4 @@
-# Unified Streaming Live Origin Demo
+# Unified Streaming Live Origin Demo (v2)
 
 This demonstration shows a [Unified Streaming](http://www.unified-streaming.com/products/unified-origin) Origin setup with a Live publishing point and uses [FFmpeg](https://ffmpeg.org/) as an encoder to push an input stream.
 
