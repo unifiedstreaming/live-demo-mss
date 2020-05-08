@@ -18,6 +18,8 @@ services:
     environment:
       - PUB_POINT_URI=http://live-origin/test/test.isml
       - LOGO_OVERLAY=
+      - CODEC=libx264
+      - ASPECT_RATIO=1280x720
       - FRAME_RATE=25
       - GOP_LENGTH=48
       - VIDEO_BITRATE=500k
