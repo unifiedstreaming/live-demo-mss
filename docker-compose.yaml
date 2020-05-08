@@ -7,17 +7,28 @@ services:
     environment:
       - USP_LICENSE_KEY
       - CHANNEL=test
-      - PUB_POINT_OPTS=--archiving=1 --archive_length=21600 --archive_segment_length=3600 --dvr_window_length=1800 --restart_on_encoder_reconnect
+      - PUB_POINT_OPTS=--archiving=1 --archive_length=3600 --archive_segment_length=1800 --dvr_window_length=30 --restart_on_encoder_reconnect --mpd.min_buffer_time=48/25 --mpd.suggested_presentation_delay=48/25 --hls.minimum_fragment_length=48/25 --mpd.minimum_fragment_length=48/25 --mpd.segment_template=time --hls.client_manifest_version=4 --splice_media --timed_metadata
     healthcheck:
       test: kill -0 1
       interval: 2s
       timeout: 5s
       retries: 30
   ffmpeg:
-    build: https://github.com/unifiedstreaming/live-demo.git#:ffmpeg
+    build: ffmpeg
     environment:
-      - PUB_POINT_URI=http://live-origin/test/test.isml/Streams(ffmpeg)
+      - PUB_POINT_URI=http://live-origin/test/test.isml
       - LOGO_OVERLAY=
+      - FRAME_RATE=25
+      - GOP_LENGTH=48
+      - VIDEO_BITRATE=500k
+      - AUDIO_SAMPLERATE=48000
+      - AUDIO_BITRATE=128k
     depends_on:
       live-origin:
         condition: service_healthy
+#  push-trunk:
+#    image: unifiedstreaming/packager:latest
+#    entrypoint: push_input_stream --avail 96 -r -u http://live-origin/test/test.isml/
+#    depends_on:
+#      live-origin:
+#        condition: service_healthy
