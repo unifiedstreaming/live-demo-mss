@@ -28,6 +28,7 @@ RUN     buildDeps="autoconf \
                    make \
                    openssl-dev \
                    tar \
+                   python3 \
                    yasm \
                    zlib-dev" && \
         export MAKEFLAGS="-j$(($(grep -c ^processor /proc/cpuinfo) + 1))" && \

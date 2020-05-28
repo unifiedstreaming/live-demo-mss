@@ -1,9 +1,24 @@
-# Unified Streaming Live Origin Demo (v2)
+![Image](unifiedstreaming-logo-black.jpg?raw=true)
+# Unified Streaming Live Origin Demo <br/> Microsoft Smooth Streaming Ingest Protocal
 
-This demonstration shows a [Unified Streaming](http://www.unified-streaming.com/products/unified-origin) Origin setup with a Live publishing point and uses [FFmpeg](https://ffmpeg.org/) as an encoder to push an input stream.
+## Overview
+This project demonstrates the use of [FFmpeg](https://ffmpeg.org/) and [Unified Streaming - Origin Live](http://www.unified-streaming.com/products/unified-origin) to present a Live Adaptive Bitrate presentation. 
+
+FFMPEG delivers fragmented mp4 tracks to Unified Origin using the [Microsoft Smooth Streaming Protocol - MSS-STR](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) 
+
+For more information about Unified Origin or you have any questions please visit see our [Documentation](http://docs.unified-streaming.com/) or contact us at [support@unified-streaming.com](mailto:support@unified-streaming.com?subject=[GitHub]%20MSS%20Ingest%20Live%20Demo).
+![Image](flow.png?raw=true)
 
 The demo consists of two Docker containers which are deployed using Docker Compose.
 
+The default track configuration created is below, however encoding parameters can be updated within the [docker-compose.yaml](docker-compose.yaml).
+- Video Track 1 - 1280x720 1000k AVC 96GOP@50FPS
+- Video Track 2 - 1024x576 500k AVC 48GOP@25FPS
+- Audio Track 1 - 128kbs 48kHz AAC-LC - English language 
+- Audio Track 2 - 64kbs 48kHz AAC-LC - Dutch language
+
+## Disclaimer
+This is a demo and therefore not intended for production use.
 
 ## Setup
 
@@ -14,8 +29,7 @@ The demo consists of two Docker containers which are deployed using Docker Compo
 
 ## Build FFmpeg
 
-As this demonstration requires a patch to add functionality to FFmpeg for 
-improved live streaming the Docker image needs to be built locally.
+As this demonstration contains will generate the following stream configurations, so the Docker image needs to be built locally.
 
 This can be done by running the following command in the directory of this demo's Compose file:
 
@@ -29,7 +43,7 @@ Which will create a Docker image called livedemo_ffmpeg with the patch applied.
 
 ## Usage
 
-You need a license key to use this software. To evaluate you can create an account at [Unified Streaming Registration](https://private.unified-streaming.com/register/).
+You need a license key to use this software. To evaluate you can create an account at [Unified Streaming Registration](https://www.unified-streaming.com/licenses/access).
 
 The license key is passed to containers using the *USP_LICENSE_KEY* environment variable.
 
@@ -68,5 +82,4 @@ ffplay http://localhost/test/test.isml/.m3u8
 
 And it should look something like:
 
-![example](https://raw.githubusercontent.com/unifiedstreaming/live-demo/master/ffmpeg/example_logo.png)
-
+![example](./ffmpeg/example.png?raw=true) 
