@@ -19,6 +19,7 @@ if [ -z "${PUB_POINT_URI}" ]; then
   exit 1
 fi
 
+
 PUB_POINT=${PUB_POINT_URI}
 # Python arithmatic to create accurate timing
 ISM_OFFSET=`python3 -c "import time; print(int(time.time() * 10000000))"`
@@ -57,11 +58,6 @@ fontsize=32: x=(w-tw)/2: y=30: fontcolor=white[v+tc]; \
 -g ${V1_GOP_LENGTH} \
 -r ${V1_FRAME_RATE} \
 -keyint_min ${V1_GOP_LENGTH} \
--fflags +genpts \
--movflags isml+frag_keyframe \
--write_prft pts \
--ism_offset ${ISM_OFFSET} \
--f ismv \
 "${PUB_POINT_URI}/Streams(stream1)" \
 -map "[vid1]" -s ${V2_ASPECT_W}x${V2_ASPECT_H} -c:v ${V2_CODEC} -b:v ${V2_BITRATE} -profile:v main -preset ultrafast -tune zerolatency \
 -map "[a3]" -c:a aac -b:a ${A2_BITRATE} -ar ${A2_SAMPLERATE} -metadata:s:a:0 language=${A2_LANGUAGE} \
