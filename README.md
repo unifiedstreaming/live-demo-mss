@@ -7,7 +7,7 @@ This project demonstrates the use of [FFmpeg](https://ffmpeg.org/) and [Unified 
 FFMPEG delivers fragmented mp4 tracks to Unified Origin using the [Microsoft Smooth Streaming Protocol - MSS-STR](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) 
 
 For more information about Unified Origin or you have any questions please visit see our [Documentation](http://docs.unified-streaming.com/) or contact us at [support@unified-streaming.com](mailto:support@unified-streaming.com?subject=[GitHub]%20MSS%20Ingest%20Live%20Demo).
-![Image](../version2/flow.png?raw=true)
+![Image](flow.png?raw=true)
 
 The demo consists of two Docker containers which are deployed using Docker Compose.
 
