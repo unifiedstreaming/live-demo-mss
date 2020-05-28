@@ -1,5 +1,5 @@
-# Unified Streaming Live Origin Demo
-# Microsoft Smooth Streaming Ingest Protocal
+![Image](unifiedstreaming-logo-black.jpg?raw=true)
+# Unified Streaming Live Origin Demo <br/> Microsoft Smooth Streaming Ingest Protocal
 
 ## Overview
 This project demonstrates the use of [FFmpeg](https://ffmpeg.org/) and [Unified Streaming - Origin Live](http://www.unified-streaming.com/products/unified-origin) to present a Live Adaptive Bitrate presentation. 
